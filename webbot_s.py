@@ -46,7 +46,7 @@ for url in urls:
         films_title.append(film.text)
 
     for date in film_posts:
-        films_post.append(date.text.replace(',', ';'))
+        films_post.append(date.text.replace(',', '|'))
 
     for score in film_scores:
         per = score.text.split('\n')
