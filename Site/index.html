@@ -1,59 +1,246 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToPhilms</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+    </style>    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <aside id="sidebar">
-    <head>
-      <h1>Guia Recolhível</h1>
-      <h2>Categorias</h2>
-    </head>
-    <button id="trigger-btn" class="btn-trigger"><i class="bi bi-chevron-right"></button>
-    <ul>
-      <li><a href="#">Ação</a></li>
-      <li><a href="#">Aventura</a></li>
-      <li><a href="#">Animação</a></li>
-      <li><a href="#">Anime</a></li>
-      <li><a href="#">Biografia</a></li>
-      <li><a href="#">Comédia</a></li>
-      <li><a href="#">Crime</a></li>
-      <li><a href="#">Documentário</a></li>
-      <li><a href="#">Drama</a></li>
-      <li><a href="#">Entretenimento</a></li>
-      <li><a href="#">Fé e Espiritualidade</a></li>
-      <li><a href="#">Fantasia</a></li>
-      <li><a href="#">Game Show</a></li>
-      <li><a href="#">LGBTQ+</a></li>
-      <li><a href="#">Saúde e Bem-estar</a></li>
-      <li><a href="#">História</a></li>
-      <li><a href="#">Feriado</a></li>
-      <li><a href="#">Terror</a></li>
-      <li><a href="#">Casa e Jardim</a></li>
-      <li><a href="#">Crianças e Família</a></li>
-      <li><a href="#">Música</a></li>
-      <li><a href="#">Musical</a></li>
-      <li><a href="#">Mistério e Suspense</a></li>
-      <li><a href="#">Natureza</a></li>
-      <li><a href="#">Notícias</a></li>
-      <li><a href="#">Reality Show</a></li>
-      <li><a href="#">Romance</a></li>
-      <li><a href="#">Ficção Científica</a></li>
-      <li><a href="#">Curta-metragem</a></li>
-      <li><a href="#">Soap Opera</a></li>
-      <li><a href="#">Interesse Especial</a></li>
-      <li><a href="#">Esportes</a></li>
-      <li><a href="#">Stand-up</a></li>
-      <li><a href="#">Talk Show</a></li>
-      <li><a href="#">Viagem</a></li>
-      <li><a href="#">Variedades</a></li>
-      <li><a href="#">Guerra</a></li>
-      <li><a href="#">Faroeste</a></li>
-    </ul>
-  </aside>
 
-  <script src="script.js"></script>
+    <header>
+        <h1>ToPhilms</h1>
+    </header>
+
+    <nav class="menu__wrapper">
+        <div class="menu__bar">
+            <ul class="navigation hide">
+                <li>
+                    <button>Inicio</button>
+                </li>
+                <li>
+                    <button>Gêneros</button>
+                    <div class="dropdown">
+                        <ul class="list-items-with-description">
+                            <li>
+                                <div class="item-title">
+                                    <h3>Actions</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Ação</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Aventura</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Animação</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Anime</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Biografia</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Comédia</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Crime</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Documentário</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Drama</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Entretenimento</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Fé e Espiritualidade</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Fantasia</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Game Show</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>LGBTQ+</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Saúde e Bem-estar</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>História</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Feriado</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Terror</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Casa e Jardim</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Crianças e Família</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Música</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Musical</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Mistério e Suspense</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Natureza</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Notícias</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Reality Show</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Romance</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Ficção Científica</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Curta-metragem</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Soap Opera</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Interesse Especial</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Esportes</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Stand-up</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Talk Show</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Viagem</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Variedades</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Guerra</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-title">
+                                    <h3>Faroeste</h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button>Top Ranking</button>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+    <section>
+        <h2>Top Filmes</h2>
+        <div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ToPhilms.</p>
+    </footer>
+
 </body>
 </html>
