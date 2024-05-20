@@ -1,10 +1,9 @@
 import telebot
 from telebot import types
 import csv
-# 
+
 api_key = 'COLOQUE UMA API FDP'
 bot = telebot.TeleBot(api_key)
-# 
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback_handler(callback):
@@ -55,7 +54,6 @@ def callback_handler(callback):
                     mensagem = f"Título: {linha[0]}\nData de lançamento: {linha[1]}\nClassificação do Público: {linha[2]}\nClassificação da Crítica: {linha[3]}"
                     bot.send_message(callback.message.chat.id, mensagem)
 
-# Receber a primeira mensagem
 def verification(mensagem):
     return True
 
@@ -72,4 +70,3 @@ def main(mensagem):
     bot.send_message(mensagem.chat.id, '''Deseja ver uma filme hoje?''', reply_markup=markup)
 
 bot.polling()
-# 
