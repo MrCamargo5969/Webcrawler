@@ -1,10 +1,10 @@
 import telebot
 from telebot import types
-import pandas as pd
 import csv
-
-chave_api = '6408775461:AAFIhWk40_iqu2prkLSpVUn0xwl1Yas5MXI'
-bot = telebot.TeleBot(chave_api)
+# 
+api_key = '6620790508:AAG9icqs09lJrFflLWaskgq_fyyqHhM4kHc'
+bot = telebot.TeleBot(api_key)
+# 
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback_handler(callback):
@@ -44,40 +44,32 @@ def callback_handler(callback):
                 curta, esporte, viagem, variedade, guerra, velho_oeste)
 
         bot.send_message(callback.message.chat.id, 'Que tipo de filme gostaria de ver hoje?', reply_markup=markup)
-        callback_hand()
-        
     elif callback.data == 'n':
-        bot.send_message(callback.message.chat.id, 'Ok então, nos vemos outra hora.')
+        bot.send_message(callback.message.chat.id, 'Certo. Estarei aqui caso deseje.')
+    else:
+        print(callback.data)
+        with open("./webbot/filmes.csv", mode='r') as file:
+            leitor_csv = csv.reader(file)
+            for linha in leitor_csv:
+                if linha[4].strip() == callback.data:
+                    mensagem = f"Título: {linha[0]}\nData de lançamento: {linha[1]}\nClassificação do Público: {linha[2]}\nClassificação da Crítica: {linha[3]}"
+                    bot.send_message(callback.message.chat.id, mensagem)
 
-def callback_hand(callback):        
-        if callback.message:
-            if callback.data == 'action':
-                with open("/webbot/filmes.csv", mode='r') as file:
-                    leitor_csv = csv.reader(file)
-                    for linha in leitor_csv:
-                        if linha[4] == "action":
-                            print(f"Título: {linha[0]}\nData de lançamento: {linha[1]}\nClassificação do Público: {linha[2]}\nClassificação da Crítica: {linha[3]}")
-        
-            elif callback.data == 'adventure':
-                with open("/webbot/filmes.csv", mode='r') as file:
-                    leitor_csv = csv.reader(file)
-                    for linha in leitor_csv:
-                        if linha[4] == "adventure":
-                            print(f"Título: {linha[0]}\nData de lançamento: {linha[1]}\nClassificação do Público: {linha[2]}\nClassificação da Crítica: {linha[3]}")
-
-def verificar(mensagem):
+# Receber a primeira mensagem
+def verification(mensagem):
     return True
 
-@bot.message_handler(func=verificar)
-def responder(mensagem):
+@bot.message_handler(func=verification)
+def main(mensagem):
     markup = types.InlineKeyboardMarkup(row_width=4)
-    texto = '''Olá, Bem-vindo ao What Movie!'''
-    bot.reply_to(mensagem, texto)
-    op1 = types.InlineKeyboardButton('Bora', callback_data='s')
-    op2 = types.InlineKeyboardButton('Hoje não', callback_data='n')
+    texto = '''Olá, sou o assistente da ToPhilms!'''
+    bot.send_message(mensagem.chat.id, texto)
+    option_1 = types.InlineKeyboardButton('Sim', callback_data='s')
+    option_2 = types.InlineKeyboardButton('Não', callback_data='n')
 
-    markup.add(op1, op2)
+    markup.add(option_1, option_2)
 
-    bot.send_message(mensagem.chat.id, '''E ai?! Vai um filminho hoje?? 👀🍿🎥''', reply_markup=markup)
+    bot.send_message(mensagem.chat.id, '''Deseja ver uma filme hoje?''', reply_markup=markup)
 
 bot.polling()
+# 
