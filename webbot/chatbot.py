@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import csv
 # 
-api_key = '6620790508:AAG9icqs09lJrFflLWaskgq_fyyqHhM4kHc'
+api_key = 'COLOQUE UMA API FDP'
 bot = telebot.TeleBot(api_key)
 # 
 
