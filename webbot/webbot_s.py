@@ -56,7 +56,12 @@ for url in urls:
         films_audience.append(per[1])
     
     for image in film_images:
-        films_image.append(image.get_attribute('src'))
+        image_split = image.get_attribute('src')
+        image_real = image_split.split('v2/')
+        if len(image_real) >= 2:
+          films_image.append(image_real[1])
+        else:
+          films_image.append(image_real[0])
           
 
     genre = re.search(r'genres:(\w+)', url)
