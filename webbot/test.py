@@ -26,49 +26,21 @@ urls = ['https://www.rottentomatoes.com/browse/movies_at_home/genres:action~sort
              'https://www.rottentomatoes.com/browse/movies_at_home/genres:travel~sort:popular?page=2', 'https://www.rottentomatoes.com/browse/movies_at_home/genres:variety~sort:popular?page=2',
            'https://www.rottentomatoes.com/browse/movies_at_home/genres:war~sort:popular?page=2', 'https://www.rottentomatoes.com/browse/movies_at_home/genres:western~sort:popular?page=2']
 
-with open('webbot/filmes.csv', 'w', encoding='utf-8') as file:
-            file.write('FILM, POSTING, CRITIC, AUDIENCE, GENRE, URL \n')
-for url in urls:
-    driver.get(url)
-    time.sleep(2)
 
-    film_titles = driver.find_elements(By.CLASS_NAME, 'p--small')
-    film_posts = driver.find_elements(By.CLASS_NAME, 'smaller')
-    film_scores = driver.find_elements(By.TAG_NAME, 'score-pairs-deprecated')
-    film_images = driver.find_elements(By.CLASS_NAME, 'posterImage')
-
-    films_title = []
-    films_post = []
-    films_critic = []
-    films_audience =[]
-    films_image = []
+driver.get('https://www.rottentomatoes.com/browse/movies_at_home/genres:action~sort:popular?page=2')
+time.sleep(2)
 
 
-    for film in film_titles[4:]:
-        films_title.append(film.text)
+film_images = driver.find_elements(By.CLASS_NAME, 'posterImage')
 
-    for date in film_posts:
-        films_post.append(date.text.replace(',', '|'))
+films_image = []
 
-    for score in film_scores:
-        per = score.text.split('\n')
-        films_critic.append(per[0])
-        films_audience.append(per[1])
-    
+# Verifique se há alguma imagem encontrada
+if film_images:
     for image in film_images:
         films_image.append(image.get_attribute('src'))
-          
+    print(films_image)
+else:
+    print("Nenhuma imagem encontrada.")
 
-    genre = re.search(r'genres:(\w+)', url)
-    list_films = []
-    n = 0
-    for i, e in enumerate(films_title):
-        list_films.append(f'{films_title[n]}, {films_post[n]}, {films_critic[n]}, {films_audience[n]}, {genre.group(1)}, {films_image[n]}')
-        n += 1
-        if n == 10:
-            break
-
-    with open('webbot/filmes.csv', 'a', encoding='utf-8') as file:
-                for film in list_films:
-                    file.write(film + '\n')
 driver.quit()
