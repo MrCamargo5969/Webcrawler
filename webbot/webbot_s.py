@@ -26,7 +26,7 @@ urls = ['https://www.rottentomatoes.com/browse/movies_at_home/genres:action~sort
              'https://www.rottentomatoes.com/browse/movies_at_home/genres:travel~sort:popular?page=2', 'https://www.rottentomatoes.com/browse/movies_at_home/genres:variety~sort:popular?page=2',
            'https://www.rottentomatoes.com/browse/movies_at_home/genres:war~sort:popular?page=2', 'https://www.rottentomatoes.com/browse/movies_at_home/genres:western~sort:popular?page=2']
 
-with open('filmes.csv', 'w', encoding='utf-8') as file:
+with open('webbot/filmes.csv', 'w', encoding='utf-8') as file:
             file.write('FILM, POSTING, CRITIC, AUDIENCE, GENRE \n')
 for url in urls:
     driver.get(url)
@@ -62,7 +62,7 @@ for url in urls:
         if n == 10:
             break
 
-    with open('filmes.csv', 'a', encoding='utf-8') as file:
+    with open('webbot/filmes.csv', 'a', encoding='utf-8') as file:
                 for film in list_films:
                     file.write(film + '\n')
 driver.quit()
