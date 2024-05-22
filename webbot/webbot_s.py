@@ -27,7 +27,7 @@ urls = ['https://www.rottentomatoes.com/browse/movies_at_home/genres:action~sort
            'https://www.rottentomatoes.com/browse/movies_at_home/genres:war~sort:popular?page=2', 'https://www.rottentomatoes.com/browse/movies_at_home/genres:western~sort:popular?page=2']
 
 with open('webbot/filmes.csv', 'w', encoding='utf-8') as file:
-            file.write('FILM, POSTING, CRITIC, AUDIENCE, GENRE, URL \n')
+            file.write('FILM, POSTING, CRITIC, AUDIENCE, GENRE \n')
 for url in urls:
     driver.get(url)
     time.sleep(2)
@@ -35,13 +35,11 @@ for url in urls:
     film_titles = driver.find_elements(By.CLASS_NAME, 'p--small')
     film_posts = driver.find_elements(By.CLASS_NAME, 'smaller')
     film_scores = driver.find_elements(By.TAG_NAME, 'score-pairs-deprecated')
-    film_images = driver.find_elements(By.CLASS_NAME, 'posterImage')
 
     films_title = []
     films_post = []
     films_critic = []
     films_audience =[]
-    films_image = []
 
 
     for film in film_titles[4:]:
@@ -53,22 +51,13 @@ for url in urls:
     for score in film_scores:
         per = score.text.split('\n')
         films_critic.append(per[0])
-        films_audience.append(per[1])
-    
-    for image in film_images:
-        image_split = image.get_attribute('src')
-        image_real = image_split.split('v2/')
-        if len(image_real) >= 2:
-          films_image.append(image_real[1])
-        else:
-          films_image.append(image_real[0])
-          
+        films_audience.append(per[1]) 
 
     genre = re.search(r'genres:(\w+)', url)
     list_films = []
     n = 0
     for i, e in enumerate(films_title):
-        list_films.append(f'{films_title[n]}, {films_post[n]}, {films_critic[n]}, {films_audience[n]}, {genre.group(1)}, {films_image[n]}')
+        list_films.append(f'{films_title[n]}, {films_post[n]}, {films_critic[n]}, {films_audience[n]}, {genre.group(1)}')
         n += 1
         if n == 10:
             break

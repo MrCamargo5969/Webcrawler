@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import csv
 
-api_key = '6620790508:AAG9icqs09lJrFflLWaskgq_fyyqHhM4kHc'
+api_key = 'API AQUI'
 bot = telebot.TeleBot(api_key)
 
 @bot.callback_query_handler(func=lambda call:True)
@@ -52,7 +52,6 @@ def callback_handler(callback):
             for linha in leitor_csv:
                 if linha[4].strip() == callback.data:
                     mensagem = f"Título: {linha[0]}\nData de lançamento: {linha[1]}\nClassificação do Público: {linha[2]}\nClassificação da Crítica: {linha[3]}"
-                    bot.send_photo(callback.message.chat.id, linha[5])
                     bot.send_message(callback.message.chat.id, mensagem)
 
 def verification(mensagem):
